@@ -49,7 +49,7 @@ class Customer::RegistrationsController < Devise::RegistrationsController
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   end
-  
+
   def sign_up_params
     params.require(:customer).permit(:name, :email, :password, :password_confirmation)
   end
