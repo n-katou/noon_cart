@@ -49,6 +49,14 @@ class Customer::RegistrationsController < Devise::RegistrationsController
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   end
+  
+  def sign_up_params
+    params.require(:customer).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def account_update_params
+    params.require(:customer).permit(:name, :email, :password, :password_confirmation, :current_password)
+  end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
